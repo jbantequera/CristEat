@@ -57,7 +57,7 @@ public class CristEatGUI extends javax.swing.JFrame {
         jButton_refrescarRestaurantes = new javax.swing.JButton();
         jTabbedPane_insertar = new javax.swing.JTabbedPane();
         jPanel_insAlumnos = new javax.swing.JPanel();
-        jLabel_id = new javax.swing.JLabel();
+        jLabel_idUsuario = new javax.swing.JLabel();
         jLabel_login = new javax.swing.JLabel();
         jLabel_passw = new javax.swing.JLabel();
         jTextField_id = new javax.swing.JTextField();
@@ -65,9 +65,26 @@ public class CristEatGUI extends javax.swing.JFrame {
         jButton_insAlumno = new javax.swing.JButton();
         jPasswordField_passw = new javax.swing.JPasswordField();
         jPanel_insRestaurantes = new javax.swing.JPanel();
+        jLabel_idRestaurante = new javax.swing.JLabel();
+        jLabel_nombreRestaurante = new javax.swing.JLabel();
+        jLabel_direccionRestaurante = new javax.swing.JLabel();
+        jLabel_categRestaurante = new javax.swing.JLabel();
+        jTextField_direccionRestaurante = new javax.swing.JTextField();
+        jTextField_nombreRestaurante = new javax.swing.JTextField();
+        jTextField_idRestaurante = new javax.swing.JTextField();
+        jComboBox_categRestaurante = new javax.swing.JComboBox<>();
+        jButton_insRestaurante = new javax.swing.JButton();
+        jCheckBox_log = new javax.swing.JCheckBox();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea_log = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CristEat");
+        setMaximumSize(new java.awt.Dimension(441, 489));
+        setMinimumSize(new java.awt.Dimension(441, 415));
+        setResizable(false);
+        setSize(new java.awt.Dimension(441, 415));
 
         jTable_Usuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -100,18 +117,18 @@ public class CristEatGUI extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton_refrescarUsuarios)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton_refrescarUsuarios)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_refrescarUsuarios)
                 .addContainerGap())
@@ -150,28 +167,28 @@ public class CristEatGUI extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton_refrescarRestaurantes)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton_refrescarRestaurantes)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_refrescarRestaurantes)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPane_consultas.addTab("Restaurantes", jPanel2);
 
         jTPane_Tablas.addTab("Consultar", jTabbedPane_consultas);
 
-        jLabel_id.setText("ID");
+        jLabel_idUsuario.setText("ID");
 
         jLabel_login.setText("Login");
 
@@ -189,25 +206,26 @@ public class CristEatGUI extends javax.swing.JFrame {
         jPanel_insAlumnosLayout.setHorizontalGroup(
             jPanel_insAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_insAlumnosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(369, Short.MAX_VALUE)
                 .addComponent(jButton_insAlumno)
                 .addContainerGap())
             .addGroup(jPanel_insAlumnosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel_insAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel_insAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel_insAlumnosLayout.createSequentialGroup()
-                        .addComponent(jLabel_id)
-                        .addGap(59, 59, 59)
+                        .addComponent(jLabel_idUsuario)
+                        .addGap(65, 65, 65)
                         .addComponent(jTextField_id, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel_insAlumnosLayout.createSequentialGroup()
-                        .addGroup(jPanel_insAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_insAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel_insAlumnosLayout.createSequentialGroup()
                             .addComponent(jLabel_login)
-                            .addComponent(jLabel_passw))
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel_insAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField_passw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(221, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel_insAlumnosLayout.createSequentialGroup()
+                            .addComponent(jLabel_passw)
+                            .addGap(18, 18, 18)
+                            .addComponent(jPasswordField_passw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel_insAlumnosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jPasswordField_passw, jTextField_id, jTextField_login});
@@ -217,55 +235,148 @@ public class CristEatGUI extends javax.swing.JFrame {
             .addGroup(jPanel_insAlumnosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel_insAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_id))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel_insAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_idUsuario)
+                    .addComponent(jTextField_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel_insAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_login)
                     .addComponent(jTextField_login, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel_insAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField_passw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_passw))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+                    .addComponent(jLabel_passw)
+                    .addComponent(jPasswordField_passw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
                 .addComponent(jButton_insAlumno)
                 .addContainerGap())
         );
 
-        jPanel_insAlumnosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jPasswordField_passw, jTextField_id});
+        jPanel_insAlumnosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jPasswordField_passw, jTextField_id, jTextField_login});
 
         jTabbedPane_insertar.addTab("Usuarios", jPanel_insAlumnos);
+
+        jLabel_idRestaurante.setText("ID");
+
+        jLabel_nombreRestaurante.setText("Nombre");
+
+        jLabel_direccionRestaurante.setText("Dirección");
+
+        jLabel_categRestaurante.setText("Categoría");
+
+        jComboBox_categRestaurante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comida Americana", "Comida Española", "Comida Asiática", "Comida Italiana" }));
+
+        jButton_insRestaurante.setText("Crear");
+        jButton_insRestaurante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_insRestauranteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel_insRestaurantesLayout = new javax.swing.GroupLayout(jPanel_insRestaurantes);
         jPanel_insRestaurantes.setLayout(jPanel_insRestaurantesLayout);
         jPanel_insRestaurantesLayout.setHorizontalGroup(
             jPanel_insRestaurantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 425, Short.MAX_VALUE)
+            .addGroup(jPanel_insRestaurantesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel_insRestaurantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_insRestaurantesLayout.createSequentialGroup()
+                        .addGroup(jPanel_insRestaurantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel_nombreRestaurante)
+                            .addComponent(jLabel_direccionRestaurante)
+                            .addComponent(jLabel_idRestaurante))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel_insRestaurantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField_direccionRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField_nombreRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField_idRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel_insRestaurantesLayout.createSequentialGroup()
+                        .addComponent(jLabel_categRestaurante)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox_categRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(174, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_insRestaurantesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton_insRestaurante)
+                .addContainerGap())
         );
+
+        jPanel_insRestaurantesLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextField_direccionRestaurante, jTextField_idRestaurante, jTextField_nombreRestaurante});
+
         jPanel_insRestaurantesLayout.setVerticalGroup(
             jPanel_insRestaurantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 316, Short.MAX_VALUE)
+            .addGroup(jPanel_insRestaurantesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel_insRestaurantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField_idRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_idRestaurante))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel_insRestaurantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField_nombreRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_nombreRestaurante))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel_insRestaurantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField_direccionRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_direccionRestaurante))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel_insRestaurantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_categRestaurante)
+                    .addComponent(jComboBox_categRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addComponent(jButton_insRestaurante)
+                .addContainerGap())
         );
 
         jTabbedPane_insertar.addTab("Restaurantes", jPanel_insRestaurantes);
 
         jTPane_Tablas.addTab("Insertar", jTabbedPane_insertar);
 
+        jCheckBox_log.setSelected(true);
+        jCheckBox_log.setText("Log");
+        jCheckBox_log.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox_logActionPerformed(evt);
+            }
+        });
+
+        jTextArea_log.setColumns(20);
+        jTextArea_log.setRows(5);
+        jScrollPane3.setViewportView(jTextArea_log);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTPane_Tablas)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTPane_Tablas)
-                .addContainerGap())
+                .addComponent(jCheckBox_log)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTPane_Tablas)
-                .addContainerGap())
+                .addComponent(jTPane_Tablas, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox_log)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -302,6 +413,24 @@ public class CristEatGUI extends javax.swing.JFrame {
     private void jButton_insAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_insAlumnoActionPerformed
         contUsuarios.addUsuario(jTextField_id.getText(), jTextField_login.getText(), jPasswordField_passw.getText());
     }//GEN-LAST:event_jButton_insAlumnoActionPerformed
+
+    private void jCheckBox_logActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_logActionPerformed
+        if (jCheckBox_log.isSelected()){
+			this.jPanel3.setVisible(true);
+			this.setSize(441, 489);
+		} else {
+			this.jPanel3.setVisible(false);
+			this.setSize(441, 415);
+		}
+    }//GEN-LAST:event_jCheckBox_logActionPerformed
+
+    private void jButton_insRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_insRestauranteActionPerformed
+        String id = jTextField_idRestaurante.getText();
+		String nombre = jTextField_nombreRestaurante.getText();
+		String direccion = jTextField_direccionRestaurante.getText();
+		String categoria = jComboBox_categRestaurante.getSelectedItem().toString();
+		contRestaurantes.addRestaurante(id, nombre, direccion, categoria);
+    }//GEN-LAST:event_jButton_insRestauranteActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -340,24 +469,37 @@ public class CristEatGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_insAlumno;
+    private javax.swing.JButton jButton_insRestaurante;
     private javax.swing.JButton jButton_refrescarRestaurantes;
     private javax.swing.JButton jButton_refrescarUsuarios;
-    private javax.swing.JLabel jLabel_id;
+    private javax.swing.JCheckBox jCheckBox_log;
+    private javax.swing.JComboBox<String> jComboBox_categRestaurante;
+    private javax.swing.JLabel jLabel_categRestaurante;
+    private javax.swing.JLabel jLabel_direccionRestaurante;
+    private javax.swing.JLabel jLabel_idRestaurante;
+    private javax.swing.JLabel jLabel_idUsuario;
     private javax.swing.JLabel jLabel_login;
+    private javax.swing.JLabel jLabel_nombreRestaurante;
     private javax.swing.JLabel jLabel_passw;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel_insAlumnos;
     private javax.swing.JPanel jPanel_insRestaurantes;
     private javax.swing.JPasswordField jPasswordField_passw;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTPane_Tablas;
     private javax.swing.JTabbedPane jTabbedPane_consultas;
     private javax.swing.JTabbedPane jTabbedPane_insertar;
     private javax.swing.JTable jTable_Restaurantes;
     private javax.swing.JTable jTable_Usuarios;
+    private javax.swing.JTextArea jTextArea_log;
+    private javax.swing.JTextField jTextField_direccionRestaurante;
     private javax.swing.JTextField jTextField_id;
+    private javax.swing.JTextField jTextField_idRestaurante;
     private javax.swing.JTextField jTextField_login;
+    private javax.swing.JTextField jTextField_nombreRestaurante;
     // End of variables declaration//GEN-END:variables
 }

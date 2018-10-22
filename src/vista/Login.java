@@ -5,6 +5,8 @@
  */
 package vista;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Javier
@@ -36,6 +38,8 @@ public class Login extends javax.swing.JFrame {
         jLabel_passw = new javax.swing.JLabel();
         jPasswordField_passw = new javax.swing.JPasswordField();
         jButton_conectar = new javax.swing.JButton();
+        jLabel_bdName = new javax.swing.JLabel();
+        jTextField_bdName = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,6 +58,8 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jLabel_bdName.setText("BD");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,12 +76,18 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLabel_ip))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField_puerto, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_ip, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField_user, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                                .addComponent(jPasswordField_passw)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextField_puerto, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel_bdName)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_bdName))
+                            .addComponent(jTextField_user)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextField_ip, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jPasswordField_passw))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,7 +99,9 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_puerto)
-                    .addComponent(jTextField_puerto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_puerto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_bdName)
+                    .addComponent(jTextField_bdName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_usuario)
@@ -105,9 +119,13 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_conectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_conectarActionPerformed
-        CristEatGUI miprograma = new CristEatGUI(jTextField_ip.getText(), jTextField_puerto.getText(), "cristeat", jTextField_user.getText(), jPasswordField_passw.getText());
-		this.setVisible(false);
-		miprograma.setVisible(true);
+        try{
+			CristEatGUI miprograma = new CristEatGUI(jTextField_ip.getText(), jTextField_puerto.getText(), jTextField_bdName.getText(), jTextField_user.getText(), jPasswordField_passw.getText());
+			this.setVisible(false);
+			miprograma.setVisible(true);
+		} catch (Exception ex) {
+			JOptionPane.showMessageDialog(null, "Debes rellenar los campos de conexión");
+		}
     }//GEN-LAST:event_jButton_conectarActionPerformed
 
 	/**
@@ -147,11 +165,13 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_conectar;
+    private javax.swing.JLabel jLabel_bdName;
     private javax.swing.JLabel jLabel_ip;
     private javax.swing.JLabel jLabel_passw;
     private javax.swing.JLabel jLabel_puerto;
     private javax.swing.JLabel jLabel_usuario;
     private javax.swing.JPasswordField jPasswordField_passw;
+    private javax.swing.JTextField jTextField_bdName;
     private javax.swing.JTextField jTextField_ip;
     private javax.swing.JTextField jTextField_puerto;
     private javax.swing.JTextField jTextField_user;

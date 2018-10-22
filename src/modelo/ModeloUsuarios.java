@@ -28,11 +28,11 @@ public class ModeloUsuarios extends ModeloAbstracto{
 		this.conectarMySQL();
 		
 		//Importamos los usuarios
-		this.importarUsuarios();
+		this.refrescarUsuarios();
 	}
 
 	//Método para importar los usuarios de la base de datos a la que estemos conectados
-	private void importarUsuarios(){
+	private void refrescarUsuarios(){
 		//Preparamos un ArrayList vacío
 		this.tablaUsuarios = new ArrayList();
         Statement stmt = null;
@@ -67,9 +67,7 @@ public class ModeloUsuarios extends ModeloAbstracto{
 	
 	//Método para devolver los usuarios del sistema (A cualquier controlador)
 	public ArrayList<Usuario> getUsuarios(){
-		if (this.tablaUsuarios == null) //Si por algún casual no tenemos usuarios, los importamos
-			this.importarUsuarios();
-		
+		this.refrescarUsuarios();
 		return (this.tablaUsuarios);
 	}
 	
@@ -84,7 +82,7 @@ public class ModeloUsuarios extends ModeloAbstracto{
             stmt = this.con.createStatement();
             stmt.executeUpdate(consulta);
 			
-			this.importarUsuarios();
+			this.refrescarUsuarios();
         } catch (SQLException e){
 			JOptionPane.showMessageDialog(null, "Error al crear el usuario");
             System.out.println("Excepción SQL añadiendo usuarios");

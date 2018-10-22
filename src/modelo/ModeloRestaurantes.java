@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,11 +28,11 @@ public class ModeloRestaurantes extends ModeloAbstracto {
 		this.conectarMySQL();
 		
 		//Importamos la tabla restaurantes
-		this.importarRestaurantes();
+		this.refrescarRestaurantes();
 	}
 	
 	//Método para mapear la tabla restaurantes de una base de datos
-	private void importarRestaurantes(){
+	private void refrescarRestaurantes(){
 		//Preparamos un ArrayList vacío
 		this.tablaRestaurantes = new ArrayList();
         Statement stmt = null;
@@ -67,10 +68,36 @@ public class ModeloRestaurantes extends ModeloAbstracto {
 
 	//Método para devolver la tabla restaurantes
 	public ArrayList<Restaurante> getRestaurantes(){
-		if (this.tablaRestaurantes == null)
-			this.importarRestaurantes();
-		
+		this.refrescarRestaurantes();
 		return (this.tablaRestaurantes);
+	}
+	
+	public void addRestaurante(Restaurante nuevorestaurante){
+		Statement stmt = null;
+		
+		//Consulta que vamos a realizar
+        String consulta = "insert into " + this.dbName + ".restaurantes values("
+				+ nuevorestaurante.getId() + ", \"" + nuevorestaurante.getNombre() 
+				+ "\",\"" + nuevorestaurante.getDireccion() + "\", \"" 
+				+ nuevorestaurante.getCategoria() + "\")";
+        
+        try{
+            stmt = this.con.createStatement();
+            stmt.executeUpdate(consulta);
+			
+			this.refrescarRestaurantes();
+        } catch (SQLException e){
+			JOptionPane.showMessageDialog(null, "Error al crear el restaurante");
+            System.out.println("Excepción SQL añadiendo restaurantes");
+        } finally {
+            if (stmt != null){
+                try {
+					stmt.close(); //Cerramos la petición
+				} catch (SQLException ex) {
+					System.out.println("No se pudo cerrar la petición");
+				}
+			}
+		}
 	}
 	
 }

@@ -20,12 +20,15 @@ public class ControladorRestaurantes {
 	
 	public ControladorRestaurantes(String ip, String puerto, String bdName, String user, String passw){
 		this.model = new ModeloRestaurantes(ip, puerto, bdName, user, passw);
-		this.tablaRestaurantes = model.getRestaurantes();
+		this.tablaRestaurantes = null;
 	}
 
 	public ArrayList<Restaurante> getRestaurantes(){
-		return this.tablaRestaurantes;
+		return model.getRestaurantes();
 	}
 	
-	//public void recargarRestaurantes
+	public void addRestaurante(String id, String nombre, String direccion, String categoria){
+		Restaurante nuevorestaurante = new Restaurante(Integer.parseInt(id), nombre, direccion, categoria);
+		model.addRestaurante(nuevorestaurante);
+	}
 }
