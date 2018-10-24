@@ -32,8 +32,8 @@ public class CristEatGUI extends javax.swing.JFrame {
 	
 	public CristEatGUI(String ip, String puerto, String bdName, String user, String passw){
 		initComponents();
-		contRestaurantes = new ControladorRestaurantes(ip, puerto, bdName, user, passw);
-		contUsuarios = new ControladorUsuarios(ip, puerto, bdName, user, passw);
+		contRestaurantes = new ControladorRestaurantes(ip, puerto, bdName, user, passw, jTextArea_log);
+		contUsuarios = new ControladorUsuarios(ip, puerto, bdName, user, passw, jTextArea_log);
 	}
 
 	/**
@@ -337,6 +337,7 @@ public class CristEatGUI extends javax.swing.JFrame {
             }
         });
 
+        jTextArea_log.setEditable(false);
         jTextArea_log.setColumns(20);
         jTextArea_log.setRows(5);
         jScrollPane3.setViewportView(jTextArea_log);

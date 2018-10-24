@@ -20,7 +20,7 @@ public class ModeloRestaurantes extends ModeloAbstracto {
 	private ArrayList<Restaurante> tablaRestaurantes = null;
 	
 	//Constructor por parámetros
-	public ModeloRestaurantes(String ip, String port, String dbName, String user, String passw){
+	public ModeloRestaurantes(String ip, String port, String dbName, String user, String passw) throws SQLException{
 		//Llamamos al constructor del padre
 		super(ip, port, dbName, user, passw);
 		
@@ -32,7 +32,7 @@ public class ModeloRestaurantes extends ModeloAbstracto {
 	}
 	
 	//Método para mapear la tabla restaurantes de una base de datos
-	private void refrescarRestaurantes(){
+	private void refrescarRestaurantes() throws SQLException{
 		//Preparamos un ArrayList vacío
 		this.tablaRestaurantes = new ArrayList();
         Statement stmt = null;
@@ -40,39 +40,31 @@ public class ModeloRestaurantes extends ModeloAbstracto {
 		//Preparamos la consulta que vamos a realizar
         String consulta = "SELECT * FROM " + this.dbName + ".restaurantes";
         
-        try{
-            stmt = this.con.createStatement();
-            ResultSet rs = stmt.executeQuery(consulta);
-            
-            while (rs.next()) { //Mientras existan tuplas
-				int rId = rs.getInt("id");
-				String rNombre = rs.getString("nombre");
-                String rDirecc = rs.getString("direccion");
-                String rCateg = rs.getString("categoria");
-				
-				//Mapeamos la tupla y añadimos un restaurante con esos datos al ArrayList
-                this.tablaRestaurantes.add(new Restaurante(rId, rNombre, rDirecc, rCateg));
-            }
-        } catch (SQLException e){
-            System.out.println("debug: Excepción SQL importando restaurantes");
-        } finally {
-            if (stmt != null){
-                try {
-					stmt.close(); //Cerramos la conexión
-				} catch (SQLException ex) {
-					System.out.println("debug: No se pudo cerrar la petición");
-				}
-			}
+        
+		stmt = this.con.createStatement();
+		ResultSet rs = stmt.executeQuery(consulta);
+
+		while (rs.next()) { //Mientras existan tuplas
+			int rId = rs.getInt("id");
+			String rNombre = rs.getString("nombre");
+			String rDirecc = rs.getString("direccion");
+			String rCateg = rs.getString("categoria");
+
+			//Mapeamos la tupla y añadimos un restaurante con esos datos al ArrayList
+			this.tablaRestaurantes.add(new Restaurante(rId, rNombre, rDirecc, rCateg));
 		}
+		
+		if (stmt != null)
+			stmt.close(); //Cerramos la conexión
 	}
 
 	//Método para devolver la tabla restaurantes
-	public ArrayList<Restaurante> getRestaurantes(){
+	public ArrayList<Restaurante> getRestaurantes() throws SQLException{
 		this.refrescarRestaurantes();
 		return (this.tablaRestaurantes);
 	}
 	
-	public void addRestaurante(Restaurante nuevorestaurante){
+	public void addRestaurante(Restaurante nuevorestaurante) throws SQLException{
 		Statement stmt = null;
 		
 		//Consulta que vamos a realizar
@@ -81,23 +73,15 @@ public class ModeloRestaurantes extends ModeloAbstracto {
 				+ "\",\"" + nuevorestaurante.getDireccion() + "\", \"" 
 				+ nuevorestaurante.getCategoria() + "\")";
         
-        try{
-            stmt = this.con.createStatement();
-            stmt.executeUpdate(consulta);
+		stmt = this.con.createStatement();
+		stmt.executeUpdate(consulta);
 			
-			this.refrescarRestaurantes();
-        } catch (SQLException e){
-			JOptionPane.showMessageDialog(null, "Error al crear el restaurante");
-            System.out.println("Excepción SQL añadiendo restaurantes");
-        } finally {
-            if (stmt != null){
-                try {
-					stmt.close(); //Cerramos la petición
-				} catch (SQLException ex) {
-					System.out.println("No se pudo cerrar la petición");
-				}
-			}
+		this.refrescarRestaurantes();
+        
+		if (stmt != null){
+			stmt.close(); //Cerramos la petición
 		}
+	
 	}
 	
 }

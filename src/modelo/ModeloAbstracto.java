@@ -29,13 +29,8 @@ abstract public class ModeloAbstracto {
 		this.passw = passw;
 	}
 	
-	public void conectarMySQL(){
-		try {
-			this.con = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port+ "/" + dbName, user, passw);	
-		} catch (SQLException ex) {
-			JOptionPane.showMessageDialog(null, "Error al establecer una conexión");
-			System.out.println("Excepción SQL al establecer una conexión con el SGBD MySQL");
-		}
+	public void conectarMySQL() throws SQLException{
+		this.con = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port+ "/" + dbName, user, passw);	
 	}
 	
 }

@@ -20,7 +20,7 @@ public class ModeloUsuarios extends ModeloAbstracto{
 	private ArrayList<Usuario> tablaUsuarios = null;
 	
 	//Constructor por parámetros
-	public ModeloUsuarios(String ip, String port, String dbName, String user, String passw){
+	public ModeloUsuarios(String ip, String port, String dbName, String user, String passw) throws SQLException{
 		//Llamamos al constructor del padre
 		super(ip, port, dbName, user, passw);
 		
@@ -32,7 +32,7 @@ public class ModeloUsuarios extends ModeloAbstracto{
 	}
 
 	//Método para importar los usuarios de la base de datos a la que estemos conectados
-	private void refrescarUsuarios(){
+	private void refrescarUsuarios() throws SQLException{
 		//Preparamos un ArrayList vacío
 		this.tablaUsuarios = new ArrayList();
         Statement stmt = null;
@@ -40,61 +40,42 @@ public class ModeloUsuarios extends ModeloAbstracto{
 		//Consulta que vamos a realizar
         String consulta = "SELECT * FROM " + this.dbName + ".usuarios";
         
-        try{
-            stmt = this.con.createStatement();
-            ResultSet rs = stmt.executeQuery(consulta);
-            
-            while (rs.next()) { //Mientras existan tuplas
-                int rId = rs.getInt("id");
-                String rLogin = rs.getString("login");
-                String rPassw = rs.getString("passw");
-				
-				//Añadimos a la tabla de usuarios un nuevo usuario con los datos mapeados
-                this.tablaUsuarios.add(new Usuario(rId, rLogin, rPassw));
-            }
-        } catch (SQLException e){
-            System.out.println("Excepción SQL importando usuarios");
-        } finally {
-            if (stmt != null){
-                try {
-					stmt.close(); //Cerramos la petición
-				} catch (SQLException ex) {
-					System.out.println("No se pudo cerrar la petición");
-				}
-			}
+        stmt = this.con.createStatement();
+		ResultSet rs = stmt.executeQuery(consulta);
+
+		while (rs.next()) { //Mientras existan tuplas
+			int rId = rs.getInt("id");
+			String rLogin = rs.getString("login");
+			String rPassw = rs.getString("passw");
+
+			//Añadimos a la tabla de usuarios un nuevo usuario con los datos mapeados
+			this.tablaUsuarios.add(new Usuario(rId, rLogin, rPassw));
 		}
+		
+		if (stmt != null)
+			stmt.close(); //Cerramos la petición
 	}
 	
 	//Método para devolver los usuarios del sistema (A cualquier controlador)
-	public ArrayList<Usuario> getUsuarios(){
+	public ArrayList<Usuario> getUsuarios() throws SQLException{
 		this.refrescarUsuarios();
 		return (this.tablaUsuarios);
 	}
 	
-	public void addUsuario(Usuario nuevousuario){
+	public void addUsuario(Usuario nuevousuario) throws SQLException {
 		Statement stmt = null;
 		
 		//Consulta que vamos a realizar
         String consulta = "insert into " + this.dbName + ".usuarios values(" + nuevousuario.getId()
 				+ ", \"" + nuevousuario.getLogin() + "\",\"" + nuevousuario.getPassw() + "\")";
         
-        try{
-            stmt = this.con.createStatement();
-            stmt.executeUpdate(consulta);
+        stmt = this.con.createStatement();
+        stmt.executeUpdate(consulta);
 			
-			this.refrescarUsuarios();
-        } catch (SQLException e){
-			JOptionPane.showMessageDialog(null, "Error al crear el usuario");
-            System.out.println("Excepción SQL añadiendo usuarios");
-        } finally {
-            if (stmt != null){
-                try {
-					stmt.close(); //Cerramos la petición
-				} catch (SQLException ex) {
-					System.out.println("No se pudo cerrar la petición");
-				}
-			}
-		}
+		this.refrescarUsuarios();
+		
+		if (stmt != null)
+			stmt.close(); //Cerramos la petición
 	}
 	
 	

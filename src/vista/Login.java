@@ -5,6 +5,7 @@
  */
 package vista;
 
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -42,6 +43,7 @@ public class Login extends javax.swing.JFrame {
         jTextField_bdName = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
 
         jLabel_ip.setText("IP");
 
@@ -123,8 +125,8 @@ public class Login extends javax.swing.JFrame {
 			CristEatGUI miprograma = new CristEatGUI(jTextField_ip.getText(), jTextField_puerto.getText(), jTextField_bdName.getText(), jTextField_user.getText(), jPasswordField_passw.getText());
 			this.setVisible(false);
 			miprograma.setVisible(true);
-		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(null, "Debes rellenar los campos de conexión");
+		} catch (NullPointerException ex) {
+			JOptionPane.showMessageDialog(null, "No se ha podido establecer una conexión");
 		}
     }//GEN-LAST:event_jButton_conectarActionPerformed
 
