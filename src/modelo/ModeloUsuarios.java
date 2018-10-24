@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -72,6 +71,8 @@ public class ModeloUsuarios extends ModeloAbstracto{
         stmt = this.con.createStatement();
         stmt.executeUpdate(consulta);
 			
+		//Después de insertar el usuario en la base de datos, refrescamos
+		//el array de usuarios para que se añada también el nuevo usuario
 		this.refrescarUsuarios();
 		
 		if (stmt != null)

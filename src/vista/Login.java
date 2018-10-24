@@ -122,9 +122,10 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton_conectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_conectarActionPerformed
         try{
+			//Intentamos crear un JFrame de nuestro programa
 			CristEatGUI miprograma = new CristEatGUI(jTextField_ip.getText(), jTextField_puerto.getText(), jTextField_bdName.getText(), jTextField_user.getText(), jPasswordField_passw.getText());
-			this.setVisible(false);
-			miprograma.setVisible(true);
+			this.setVisible(false); //Ocultamos el JFrame del login
+			miprograma.setVisible(true); //Y mostramos el del programa en si
 		} catch (NullPointerException ex) {
 			JOptionPane.showMessageDialog(null, "No se ha podido establecer una conexión");
 		}

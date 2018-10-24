@@ -4,6 +4,7 @@ import modelo.Usuario;
 import modelo.Restaurante;
 import controlador.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -412,7 +413,13 @@ public class CristEatGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_refrescarRestaurantesActionPerformed
 
     private void jButton_insAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_insAlumnoActionPerformed
-        contUsuarios.addUsuario(jTextField_id.getText(), jTextField_login.getText(), jPasswordField_passw.getText());
+        //Llamamos al controlador
+		contUsuarios.addUsuario(jTextField_id.getText(), jTextField_login.getText(), jPasswordField_passw.getText());
+		
+		//Reiniciamos los textField
+		jTextField_id.setText("");
+		jTextField_login.setText("");
+		jPasswordField_passw.setText("");
     }//GEN-LAST:event_jButton_insAlumnoActionPerformed
 
     private void jCheckBox_logActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_logActionPerformed
@@ -430,7 +437,14 @@ public class CristEatGUI extends javax.swing.JFrame {
 		String nombre = jTextField_nombreRestaurante.getText();
 		String direccion = jTextField_direccionRestaurante.getText();
 		String categoria = jComboBox_categRestaurante.getSelectedItem().toString();
+		
+		//Llamamos al controlador
 		contRestaurantes.addRestaurante(id, nombre, direccion, categoria);
+		
+		//Reiniciamos los textField
+		jTextField_idRestaurante.setText("");
+		jTextField_nombreRestaurante.setText("");
+		jTextField_direccionRestaurante.setText("");
     }//GEN-LAST:event_jButton_insRestauranteActionPerformed
 
 	/**

@@ -6,10 +6,14 @@
             <file>file:/C:/Users/Javier/Documents/NetBeansProjects/CristEat/src/vista/CristEatGUI.java</file>
             <file>file:/C:/Users/Javier/Documents/NetBeansProjects/CristEat/src/vista/Login.java</file>
             <file>file:/C:/Users/Javier/Documents/NetBeansProjects/CristEat/src/controlador/ControladorRestaurantes.java</file>
+            <file>file:/C:/Users/Javier/Documents/NetBeansProjects/CristEat/src/modelo/Usuario.java</file>
             <file>file:/C:/Users/Javier/Documents/NetBeansProjects/CristEat/src/modelo/ModeloRestaurantes.java</file>
+            <file>file:/C:/Users/Javier/Documents/NetBeansProjects/CristEat/src/modelo/Restaurante.java</file>
             <file>file:/C:/Users/Javier/Documents/NetBeansProjects/CristEat/src/modelo/ModeloAbstracto.java</file>
+            <file>file:/C:/Users/Javier/Documents/NetBeansProjects/CristEat/src/vista/CristEatConsola.java</file>
             <file>file:/C:/Users/Javier/Documents/NetBeansProjects/CristEat/src/modelo/ModeloUsuarios.java</file>
             <file>file:/C:/Users/Javier/Documents/NetBeansProjects/CristEat/src/controlador/ControladorUsuarios.java</file>
+            <file>file:/C:/Users/Javier/Documents/NetBeansProjects/CristEat/src/vista/VistaTablas.java</file>
         </group>
     </open-files>
 </project-private>

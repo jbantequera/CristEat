@@ -3,8 +3,7 @@ package controlador;
 import java.sql.SQLException;
 import modelo.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 /*
@@ -64,14 +63,26 @@ public class ControladorRestaurantes {
 	}
 	
 	public void addRestaurante(String id, String nombre, String direccion, String categoria){
-		Restaurante nuevorestaurante = new Restaurante(Integer.parseInt(id), nombre, direccion, categoria);
-		try {
-			model.addRestaurante(nuevorestaurante);
-		} catch (SQLException ex) {
-			if (logger != null)
-				logger.append("Excepción SQL al insertar un restaurante en la base de datos. \n");
-			else
-				System.out.println("Excepción SQL al insertar un restaurante en la base de datos.");	
+		if ((!id.equals("")) && (!nombre.equals("")) && (!direccion.equals("")) & (!categoria.equals(""))){
+			try{
+				Restaurante nuevorestaurante = new Restaurante(Integer.parseInt(id), nombre, direccion, categoria);
+
+				try {
+					model.addRestaurante(nuevorestaurante);
+					logger.append("Restaurante insertado con éxito. \n");
+				} catch (SQLException ex) {
+					if (logger != null)
+						logger.append("Excepción SQL al insertar un restaurante en la base de datos. \n");
+					else
+						System.out.println("Excepción SQL al insertar un restaurante en la base de datos.");	
+				}
+			} catch (NumberFormatException ex) {
+				logger.append("No se ha podido crear el restaurante.");
+				JOptionPane.showMessageDialog(null, "Debes introducir un número en el campo ID.");
+			}
+		} else {
+			JOptionPane.showMessageDialog(null, "No puedes dejar ningún campo vacío.");
+			logger.append("No se ha podido crear el usuario.");
 		}
 	}
 }

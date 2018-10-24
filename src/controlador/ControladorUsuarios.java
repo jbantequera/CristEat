@@ -7,8 +7,7 @@ package controlador;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import modelo.*;
 
@@ -61,14 +60,26 @@ public class ControladorUsuarios {
 	}
 	
 	public void addUsuario(String id, String login, String passw){
-		Usuario nuevousuario = new Usuario(Integer.parseInt(id), login, passw);
-		try {
-			model.addUsuario(nuevousuario);
-		} catch (SQLException ex) {
-			if (logger != null)
-				logger.append("Excepción SQL al insertar un usuario en la base de datos \n");
-			else
-				System.out.println("Excepcion SQL al insertar un usuario en la base de datos");
+		if ((!id.equals("")) && (!login.equals("")) && (!passw.equals(""))){
+			try {
+				Usuario nuevousuario = new Usuario(Integer.parseInt(id), login, passw);
+			
+				try {
+					model.addUsuario(nuevousuario);
+					logger.append("Usuario insertado con éxito");
+				} catch (SQLException ex) {
+					if (logger != null)
+						logger.append("Excepción SQL al insertar un usuario en la base de datos \n");
+					else
+						System.out.println("Excepcion SQL al insertar un usuario en la base de datos");
+				}
+			} catch (NumberFormatException ex) {
+				logger.append("No se ha podido crear el usuario.");
+				JOptionPane.showMessageDialog(null, "Debes introducir un número en el campo ID.");
+			}
+		} else {
+			JOptionPane.showMessageDialog(null, "No puedes dejar ningún campo vacío.");
+			logger.append("No se ha podido crear el usuario. \n");
 		}
 	}
 }
